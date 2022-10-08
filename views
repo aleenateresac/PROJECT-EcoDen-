@@ -1,0 +1,70 @@
+from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.template import loader
+from . models import tbl_reg,tbl_login
+from hashlib import sha256
+
+# Create your views here.
+def demo(request):
+    return render(request,'index.html')
+def ewaste(request):
+    return render(request,'EWasteManagement.html')
+def reg(request):
+    if request.method == 'POST':
+        name=request.POST['name']
+        email=request.POST['email']
+        password=request.POST['password']
+        cpassword=request.POST['cpassword']
+        phone=request.POST['phone']
+        address=request.POST['address']
+        if password == cpassword:
+            if tbl_reg.objects.filter(email=email).exists():
+                print("email already exists")
+                return redirect('reg')
+            else:
+                tbl_reg(name=name,email=email,password=password,cpassword=cpassword,phone=phone,address=address).save()
+                tbl_login(email=email,password=password).save()
+                print("registered")
+                return redirect('login')
+        else:
+            print("not match")
+            return redirect('reg')
+        #return redirect('Login.html')
+    return render(request,'Registration.html')
+
+
+
+        
+
+    
+def login(request):
+    request.session.flush()
+    if 'email' in request.session:
+        return redirect('/ewaste/')
+    if request.method == 'POST':
+            email=request.POST.get('email')
+            password=request.POST.get('password')
+            print(email,password)
+            new_user=tbl_reg.objects.filter(email=email,password=password)
+            if new_user:
+                user_details=tbl_login.objects.get(email=email,password=password)
+                email=user_details.email
+                request.session['email']=email
+                return redirect('ewaste/')
+            else:
+                print("invalid")
+    return render(request,"Login.html")
+    
+# def user(request):
+#     if 'email' in request.session:
+#         email=request.session['email']
+#     return render(request,'user')
+
+# def logout(request):
+#     if 'email' in request.session:
+#         request.session.flush()
+#     return redirect (login)
+
+
+
+
