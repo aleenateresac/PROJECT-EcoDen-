@@ -1,0 +1,37 @@
+from django.db import models
+# from django.contrib.auth.models import User
+# from django.contrib.auth.models import AbstractUser
+
+
+# Create your models here.
+# class reg(AbstractUser):
+#     cpassword=models.CharField(max_length=10, default='')
+#     phone=models.CharField(max_length=15, default='')
+#     address=models.CharField(max_length=30, default='')
+#     gender=models.CharField(max_length=10, default='')
+#     role=models.CharField(max_length=10, default='')
+
+class tbl_reg(models.Model):
+    name=models.CharField(max_length=25)
+    email=models.CharField(max_length=25)
+    password=models.CharField(max_length=25)
+    cpassword=models.CharField(max_length=10)
+    phone=models.CharField(max_length=14)
+    address=models.TextField(max_length=30)
+    role=models.CharField(max_length=10)
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now_add=True)
+    status=models.BooleanField(default=True)
+
+    #
+    def __str__(self):
+        return self.name
+class tbl_login(models.Model):
+    email = models.CharField(max_length=25)
+    password = models.CharField(max_length=25)
+class product(models.Model):
+    product_image = models.ImageField(max_length=100)
+    product_description = models.CharField(max_length=100)
+    def __str__(Self):
+        return self.product_description
+
