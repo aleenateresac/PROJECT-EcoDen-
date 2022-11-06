@@ -1,0 +1,51 @@
+from django.contrib import admin
+from django.contrib.auth.models import Group
+from . models import Account
+from django.contrib.auth.admin import UserAdmin
+from sample.models import product
+from sample.models import productcustomer
+from sample.models import pickup
+
+# #  Register your models here.
+admin.site.unregister(Group)
+admin.site.site_header="EcoDen"
+admin.site.site_title="Welcome To Admin's Dashboard"
+admin.site.index_title="Welcome to EcoDen Dashboard"
+admin.site.register(Account)
+admin.site.register(product)
+admin.site.register(productcustomer)
+admin.site.register(pickup)
+
+
+class AccountAdmin(UserAdmin):
+    list_display = ('name','lname','email','phone','address','city','state','pincode','status')
+    ordering=('name',)
+    search_fields = ('name','email')
+    filter_horizontal = ()
+    list_per_page = 50
+    list_filter = ('name','email')
+    filedsets=()
+    list_display_links = ('email')
+
+class productadmin(admin.ModelAdmin):
+    list_display = ['product_image','product_description']
+
+class productcustomeradmin(admin.ModelAdmin):
+    list_display = ['product_image','product_name','product_description','product_price']
+
+class pickup(admin.ModelAdmin):
+    list_display = ['name','lname']
+
+# from django.contrib import admin
+# from sample.models import product
+# from sample.models import recycledproducts
+# from sample.models import order
+# from sample.models import orderItem
+# from sample.models import ShippingAddress
+
+# # Register your models here.
+# admin.site.register(tbl_reg)
+# admin.site.register(tbl_login)
+# admin.site.register(order)
+# admin.site.register(orderItem)
+# admin.site.register(ShippingAddress)
