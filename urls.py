@@ -1,5 +1,7 @@
 from . import views
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('',views.demo,name='demo'),
@@ -7,22 +9,27 @@ urlpatterns = [
     path('reg/',views.reg,name='reg'),
     path('login/',views.login,name='login'),
     path('customer/',views.customer,name='customer'),
-    path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
-    path('pluscart/',views.pluscart,name='pluscart'),
-    path('minuscart/',views.minuscart,name='minuscart'),
-    path('show_cart/', views.show_cart, name='show_cart'),
-    path('emptycart/', views.show_cart, name='emptycart'),
-    # path('cart/',views.cart,name='cart'),
-    # path('checkout/',views.checkout,name='checkout'),
-    path('pickup/',views.pickup,name='pickup'),
+    path('prof/',views.prof,name='prof'),
+    path('profupdate/',views.prof_update,name='profupdate'),
+    path('add_cart/',views.add_cart,name='add_cart'),
+    path('view_cart/',views.view_cart,name='view_cart'),
+    path('productsummary/',views.productsummary,name='productsummary'),
+    path('plusqty/<int:id>/',views.plusqty,name='plusqty'),
+    path('minusqty/<int:id>/',views.minusqty,name='minusqty'),
+    path('de_cart/<int:id>/', views.de_cart, name='de_cart'),
+    path('emptycart/', views.view_cart, name='emptycart'),
+    path('pickup1/',views.pickup1,name='pickup1'),
     path('logout/',views.logout,name='logout'),
-    path('base/',views.base,name='base'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('changepassword/',views.changepassword,name='changepassword'),
     path('resetpassword_validate/<uidb64>/<token>/', views.resetpassword_validate, name='resetpassword_validate'),
     path('forgotPassword/', views.forgotPassword, name='forgotPassword'),
     path('resetPassword/', views.resetPassword, name='resetPassword'),
     path('updateProfile/',views.updateProfile,name='updateProfile'),
-    # path('logout/',views.logout,name='login')
+
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)   
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

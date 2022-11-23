@@ -22,8 +22,8 @@ from django.template import loader
 from hashlib import sha256
 from .models import Cart
 from .models import product
+from .models import dumb
 from .models import productcustomer
-from .models import pickup
 from email_validator import validate_email
 import re
 from django.contrib.auth import authenticate
@@ -71,7 +71,7 @@ def reg(request):
         send_mail(
             'Please activate your account',
             message,
-            'ajcejobportal@gmail.com',
+            'ecodenmanage@gmail.com',
             [email],
             fail_silently=False,
         )
@@ -79,73 +79,7 @@ def reg(request):
 
         return redirect('/login/?command=verification&email=' + email)
     return render(request,'Registration.html')
-# #     if request.method == 'POST':
-# #         name=request.POST['name']
-# #         lname=request.POST['lname']
-# #         email=request.POST['email']
-# #         password=request.POST['password']
-# #         cpassword=request.POST['cpassword']
-# #         phone=request.POST['phone']
-# #         # address=request.POST['address']
-# #         Role=request.POST["Role"]
-# #     #     if (password == cpassword):
 
-# #     #         user=User.objects.create_user(name=name,lname=lname,email=email,password=password,cpassword=cpassword,phone=phone,Role=Role)
-# #     #         user.save()
-# #     #         print('user created')
-# #     #         return redirect('login')
-
-# #     #     else:
-# #     #         print('not matching')
-# #     #         return redirect('reg')
-# #     # else:
-# #     #     return redirect('reg')
-
-# #         # if len(name)<3:
-# #         #     return redirect('reg')
-# #         # if len(phone)>10 or len(phone)<10:
-# #         #     return redirect('reg')
-# #         # else:
-# #         #     if phone[0]=='7' or phone[0]=='8' or phone[0]=='9' or phone[0]=='6':
-# #         #         try:
-# #         #             phone=int(phone)
-# #         #             return redirect('login')
-# #         #         except:
-# #         #             return redirect('reg')
-# #         #     else:
-# #         #         return redirect('reg')
-# #         # if len(email)>10 and len(email)<30:
-# #         #     validate_email(email)
-# #         #     return redirect('login')
-# #         # else:
-# #         #     return redirect('reg')
-# #         # regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-
-
-# #         if (password == cpassword):
-# #             if tbl_reg.objects.filter(email=email).exists():
-# #                 print("email already exists")
-# #                 pyautogui.alert('Just a notification', "Title")
-# #                 return redirect('reg')
-# #             else:
-# #                 tbl_reg(name=name,lname=lname,email=email,password=password,cpassword=cpassword,phone=phone,Role=Role).save()
-# #                 tbl_login(email=email,password=password).save()
-# #                 print("registered")
-# #                 return redirect('login')
-# #             # return redirect('reg')
-# #         else:
-# #             print("not match")
-# #             return redirect('reg')
-# #         #return redirect('Login.html')
-# #     return render(request,'Registration.html')
-
-
-# # # def isValid(email):
-# # #     if re.fullmatch(regex, email):
-# # #         print("Valid email")
-# # #     else:
-# # #         print("Invalid email")
-# # #         # return redirect('reg')   
         
         
 
@@ -171,146 +105,204 @@ def login(request):
             messages.error(request,'Invalid Creddentials')
             return redirect('login')
     return render(request,'Login.html')
-# #     # request.session['email'] = 'null'
-# #     # request.session['password'] = 'null'
-# #     # if 'email' in request.session:
-# #     #     return redirect('user/')
-# #     if request.method == 'POST':
-# #         email=request.POST['email']
-# #         print('email')
-# #         password=request.POST['password']
-# #         print('password')
-       
-# #         if tbl_login.objects.filter(email=email,password=password).exists():
-# #             # request.session['email']=email
-# #             # request.session['password']=password
-# #             user_detailes=tbl_login.objects.get(email=email,password=password)
-# #             email=user_detailes.email
-# #             request.session['email']=email
-# #             return redirect('user')
-# #         else:
-# #             print("invalid")
-# #             # return redirect('login')
-# #     return render(request,"Login.html") 
+
 
          
     
 def customer(request):
-#     if request.session['email'] == 'null':
-#         return redirect('login')
-#     elif 'email' in request.session:
-#         email=request.session['email']
-    # if 'email' in request.session:
-    #     email=request.session['email']
+    if 'email' in request.session:
         obj = productcustomer.objects.all()
         return render(request,'customer.html',{'result':obj})
-        # return redirect('user/')
-        # ,'id':id,'email':email} 
-        # return redirect('login')
+    return redirect('login')
+        
 def logout(request):
     if request.user.is_authenticated:
         auth.logout(request)
         
     return redirect ('/')
+def prof(request):
+    return render(request,'prof.html')
 
-# def cart(request):
-#     user=auth.authenticate(email=email,password=password)
-#     print(user)
-#     if user is not None:
-#         # order, created = Order.objects.get_or_create(email=email, complete=False)
-#         items = order.orderitem_Set.all()
-#     else:
-#         items = []
-#     context={'items':items}
-#     return render(request, 'cart.html',context) 
-def add_to_cart(request):
-    user = request.user
-    product_id = request.GET.get('prod_id')
-    #print(product_id)
-    product = productcustomer.objects.get(id=product_id)
-    Cart(user=user,product=product).save()
-    return redirect('/show_cart')
+def prof_update(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        city=request.POST.get('city')
+        state=request.POST.get('state')
+        pincode = request.POST.get('pincode')
+        # aadharno=request.POST.get('aadharno')
 
-def show_cart(request):
+
+
+
+        user_id = request.user.id
+
+        user = Account.objects.get(id=user_id)
+        user.name = name
+        user.lname = lname
+        user.email = email
+        user.phone = phone
+        user.address = address
+        user.city=city
+        user.state=state
+        user.pincode = pincode
+        # user.aadharno=aadharno
+        user.save()
+        messages.success(request,'Profile Are Successfully Updated. ')
+        return redirect('prof')
+
+def add_cart(request):
+    if(request.method=='POST'):
+        user = request.user
+        product_id = request.POST.get('prod_id')
+        quantity = request.POST.get('quantity',1)
+        if(product_id is None):
+            messages.error(request,"Product id is not mentioned")
+            # return
+        p = productcustomer.objects.get(id=product_id)
+        if(p.stock<quantity):
+            messages.error(request,"Not suffcient Quantity")
+            # return
+        cart,created  = Cart.objects.get_or_create(user=user,product=product)
+        if created:
+            cart.quantity=quantity
+        else:
+            cart.quantity+=quantity            
+        cart.save()
+        messages.success(request,"Product Added Succesfully")
+        return redirect('customer')
+
+def cart(request):
+    user=auth.authenticate(email=email,password=password)
+    print(user)
+    if user is not None:
+        # order, created = Order.objects.get_or_create(email=email, complete=False)
+        items = order.orderitem_Set.all()
+    else:
+        items = []
+    context={'items':items}
+
+    return render(request, 'cart.html',context) 
+
+def view_cart(request):
     if request.user.is_authenticated:
         user = request.user
-        cart = Cart.objects.filter(user=user).order_by('id')
-
-        amount = 0
-        shipping_amount = 70.0
-        total_amount = 0
+        cart = Cart.objects.filter(user=user).order_by('-id')
+        amount = 0.0
+        shipping_amount = 150.0
+        total_amount = 0.0
         cart_product = [p for p in Cart.objects.all() if p.user == user]
         #print(cart_product)
         if cart_product:
             for p in cart_product:
                 subtotal = (p.quantity * p.product.product_price)
-                amount += int(subtotal)
-                total_amount = amount + shipping_amount
+                amount += float(subtotal)
+                total_amount = amount+shipping_amount 
             return render(request, 'addtocart.html', {'cart':cart, 'total_amount':total_amount, 'amount':amount})
         else:
             return render(request, 'emptycart.html')
-def pluscart(request):
-    if request.method == 'GET':
-        prod_id = request.GET['prod_id']
-        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
-        c.quantity += 1
-        c.save()
+    if user==request.user:
+        item=productcustomer.objects.get(id=id)
+        user=request.session['email'] 
+        if item.stock>0:
+            item.stock -=1
+            if Cart.objects.filter( user=user,product_id=item).exists():
+                c_item=Cart.objects.get( user =user,product_id=item)
+                c_item.quantity = c_item.quantity + 1
+                return redirect('/view_cart')
+            else:
+                quantity = 1
+                price= item.price * quantity
+                new_cart=Cart(user=user,product_id=item.id,quantity=quantity)
+                new_cart.save()
+                return redirect('/view_cart')
+    #messages.success(request, 'Sign in..!!')
+    return redirect('login')
+def plusqty(request,id):
+    cart=Cart.objects.filter(id=id) 
+    for cart in cart:   
+        if cart.product.stock > cart.quantity:
+            cart.quantity +=1
+            cart.price=cart.quantity * cart.productcustomer.product_price
+            cart.save()
+            return redirect('/view_cart')
+        messages.info(request, 'Out of Stock')
+        return redirect('/view_cart')
+def minusqty(request,id):
+    cart=Cart.objects.filter(id=id)
+    for cart in cart:
+        if cart.quantity > 1 :
+            cart.quantity -=1
+            cart.price=cart.quantity * cart.price
+            cart.save()
+            return redirect('/view_cart')
+        return redirect('/view_cart') 
+def de_cart(request,id):
+    Cart.objects.get(id=id).delete()
+    return redirect(view_cart)       
+def add_cart(request):
+    user = request.user
+    # quantity=request.get('quantity')
+    product_id = request.GET.get('prod_id')
+    #print(product_id)
+    product = productcustomer.objects.get(id=product_id)
+    if product.stock >0:
+        Cart(user=user,product=product).save()
+        return redirect('customer')
+    else:
+        quantity = 1
+        total = productcustomer.product_price * quantity
+        new_cart = Cart(user=user,product=product).save()
+        return redirect('customer')
+def productsummary(request):
+    if request.user.is_authenticated:
+        context={}
+    return render(request, 'productsummary.html')
+        # user = request.user
+        # cart = Cart.objects.filter(user=user).order_by('-id')
+        # amount = 0.0
+        # shipping_amount = 150.0
+        # total_amount = 0.0
+        # cart_product = [p for p in Cart.objects.all() if p.user == user]
+        # #print(cart_product)
+        # if cart_product:
+        #     for p in cart_product:
+        #         subtotal = (p.quantity * p.product.product_price)
+        #         amount += float(subtotal)
+        #         total_amount = amount+shipping_amount 
+        #     return render(request, 'productsummary.html', {'cart':cart, 'total_amount':total_amount, 'amount':amount})
+        # else:
+        #     return render(request, 'customer.html')
 
-        amount = 0.0
-        shipping_amount = 150.0
-        total_amount = 0.0
-        cart_product = [p for p in Cart.objects.all() if p.user == request.user]
-        for p in cart_product:
-            subtotal = (p.quantity * p.product.selling_price)
-            amount += subtotal
-
-        data = {
-            'quantity': c.quantity,
-            'amount': amount,
-            'total_amount': amount + shipping_amount
-        }
-        return JsonResponse(data)
-
-def minuscart(request):
-    if request.method == 'GET':
-        prod_id = request.GET['prod_id']
-        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
-        if c.quantity > 1:
-            c.quantity -= 1
-            c.save()
-            amount = 0.0
-            shipping_amount = 50.0
-            total_amount = 0.0
-            cart_product = [p for p in Cart.objects.all() if p.user == request.user]
-        for p in cart_product:
-            subtotal = (p.quantity * p.product.selling_price)
-            amount += subtotal
-        data = {
-            'quantity': c.quantity,
-            'amount': amount,
-            'total_amount': amount + shipping_amount
-        }
-        return JsonResponse(data)
-def checkout(request):
-    context={}
-    return render(request, 'checkout.html',context)
-
-def pickup(request):
+def pickup1(request):
     pickupprofile=Account.objects.get(id=request.user.id)
-    context = {'pickupprofile':pickupprofile}
+    abc=dumb.objects.filter(fk=pickupprofile)
+    context = {
+        'pickupprofile':pickupprofile,
+        'dumb':abc
+
+    }
     if request.method=='POST':
         wimage=request.FILES['wimg']
-        pickup(wimage=wimg).save()
+        # date=request.date['date']
+        date = request.POST.get('date')
+        d = dumb(date=date,fk = request.user,wimage=wimage)
+        d.save()
+    # return render(request,'customer.html') 
+        # pickup(wimage=wimg).save()
         # image.save()
-    else:
-        messages.error(request, 'Image not entered')
+    # else:
+    #     messages.error(request, 'Image not entered')
         # return redirect('pickup')
    
     return render(request,'pickup.html', context)
     # )
-def base(request):
-    context={}
-    return render(request, 'base.html')
+# def base(request):
+#     context={}
+#     return render(request, 'base.html')
 
 
 def forgotPassword(request):
@@ -416,18 +408,3 @@ def updateProfile(request):
 
 
 
-#     if request.method == 'POST':
-#         fname = request.POST.get("name")
-#         lname = request.POST.get("lname")
-#         phone_number = request.POST.get("phone")
-
-#         userprofile.name=name
-#         userprofile.lname=lname
-#         userprofile.phone=phone
-#         userprofile.save()
-#         return redirect('updateProfile')
-#     context = {
-#         # 'orders_count': order_count,
-#         'userprofile':userprofile,
-#     }
-#     return render(request, 'updateProfile.html', context)

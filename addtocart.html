@@ -1,0 +1,317 @@
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EcoDen E-waste management system- Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <style>
+    input[type = submit] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+    button{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+    .dropbtn{
+    background-color: rgb(8, 103, 86);
+    color: black;
+    padding: 8px;
+    font-size: 12px;
+}
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+.dropdown-content {
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: orange;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: grey;
+}
+
+.header{
+  padding: 10px 16px;
+  position: fixed;
+  top: 0;
+  width:100%;
+  right: 0;
+  left: 0;
+  height: 70px;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+    /* .li {display:inline} */
+
+    </style>
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+
+    
+    </div>
+  </section>
+  <!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        
+        <h1>EcoDen</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="http://127.0.0.1:8000/customer/">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/customer/#about">About</a></li>
+          <li><a href="http://127.0.0.1:8000/customer/#portfolio">Products</a></li>
+          <li><a href="#bottom">Contact</a></li>
+          <li><div class="dropdown">
+            <button class="dropbtn"> {% if user.is_authenticated %} <a class="active" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.name }}&nbsp;&nbsp;{{user.lname}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>{% endif %}</button>
+            <div class="dropdown-content">
+              <a href="http://127.0.0.1:8000/changepassword">Reset Password</a>
+              <!-- <a href="{% url 'updateProfile' %}">Update Profile</a> -->
+            <a href="{% url 'logout' %}">Logout</a>
+            
+            
+            </div>
+            </div></li>        </ul>
+      </nav><!-- .navbar -->
+     </div>
+  </header>
+
+<div class="container my-4"><br><br><br><br>
+ <div class="row">
+  <div class="col-sm-8">
+  <div class="card">
+   <div class="card-body">
+    <h3>Cart</h3>
+    <hr>
+     
+     
+    {% for cart in cart %}
+    <div class="row">
+     <div class="col-sm-3 text-center align-self-center"><img src = "{{cart.product.product_image.url}}" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+     <div class="col-sm-9">
+      <div>
+       <h5>{{cart.productcustomer.product_name}}</h5>
+       <div class="my-3">
+        <label for="quantity">Quantity:</label>
+      
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+          <a  href="{% url 'minusqty' cart.id %}"><button class="btn btn-link px-0"  ></button>  </a>
+
+          <input id="form1" min="0" name="quantity" value="{{cart.quantity}}" type="number"
+            class="form-control form-control-sm" />
+          
+        <a  href="{% url 'plusqty' cart.id %}"> <button class="btn btn-link px-0" ></button>  </a>
+          
+        </div>
+     
+      </div> 
+       <div class="d-flex justify-content-between">
+        <a href="{% url 'de_cart' cart.id %}" class="btn btn-sm btn-secondary mr-3" pid="{{cart.product.id}}">Remove item </a>
+        <p class="mb-0"><span><strong>Rs.{{cart.product.product_price}}</strong></span></p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <hr>
+    {% endfor %}
+
+   </div>
+      </div>
+            </div>
+
+
+
+
+
+  <div class="col-sm-4">
+   <div class="card">
+    <div class="card-body">
+      <h3>Subtotal</h3>
+      <ul class="list-group">
+       <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount<span id="amount">Rs. {{amount}}</span></li>
+       <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping Charge<span>Rs. 150.00</span></li>
+       <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+        <div>
+           <strong>Total</strong> 
+         </div>
+         <span><strong id="total_amount">Rs.{{total_amount}}</strong></span>
+       </li>
+      </ul>
+      <div class="d-grid"><a href="{% url 'productsummary' %}"><button class="button">Place Order</button></a></div>
+    </div>
+   </div>
+  </div>
+  
+ </div>
+</div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>EcoDen</span>
+          </a>
+          <p>We do the best management of waste here. We forsee to collect 20 tonness of E-wates by 2025. The products that are made through E-wastes are of great quality.</p>
+          
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Pickup waste</a></li>
+            <li><a href="#">Recycled products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+           M G Road, Thrissur<br>
+           Kerala<br>
+            India<br><br>
+            <strong>Phone:</strong> +91 9061621107<br>
+            <strong>Email:</strong> ecodenmanage@gmail.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4" id="bottom">
+      <div class="copyright">
+        &copy; Copyright <strong><span>EcoDen</span></strong>. All Rights Reserved
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  </body>
+  </html>
+
+{% comment %} *************************  AJAX  ************************* {% endcomment %}
+<script>
+  $('.plus-cart ').click(function(){
+    var id = $(this).attr('pid').toString();
+    var eml = this.parentNode.children[2]
+    //console.log(id)
+    $.ajax({
+      type: 'GET',
+      url: "/pluscart/",
+      data:{
+        prod_id:id,
+      },
+      success:function(data){
+        //console.log(data)
+        eml.innerText = data.quantity
+        document.getElementById("amount").innerText = data.amount
+        document.getElementById("total_amount").innerText = data.total_amount
+      }
+  
+    });
+  });
+  
+  
+  $('.minus-cart ').click(function(){
+    var id = $(this).attr('pid').toString();
+    var eml = this.parentNode.children[2]
+    //console.log(id)
+    $.ajax({
+      type: 'GET',
+      url: "/minuscart/",
+      data:{
+        prod_id:id,
+      },
+      success:function(data){
+        //console.log(data)
+        eml.innerText = data.quantity
+        document.getElementById("amount").innerText = data.amount
+        document.getElementById("total_amount").innerText = data.total_amount
+      }
+  
+    });
+  });
+  
+  
+  $('.btn').click(function(){
+    var id = $('this').attr('pid').toString();
+  })
+
+ 
+  </script>
+{% endblock body %}

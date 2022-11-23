@@ -1,0 +1,524 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EcoDen E-waste management system- Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <style>
+    input[type = submit] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+    /* .li {display:inline} */
+
+    </style>
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">ecoden@gmail.co.in</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+91 9061621107</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
+  <!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>EcoDen</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="http://127.0.0.1:8000/">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/">About</a></li>
+          <li><a href="http://127.0.0.1:8000/">Products</a></li>
+          <li><a href="#bottom">Contact</a></li>
+          
+        </ul>
+      </nav><!-- .navbar -->
+     </div>
+  </header>
+    <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+    <div class="Login-page">
+    <div class="form">
+      <h2>Register</h2>
+    <form onsubmit="return Validate() && Validatename()  && ValidatePhone() && ValidateEmail() && Validatepassword() && Confirmpass() && Val()"class="register-form" action="{% url 'reg' %}" autocomplete="off" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" id="name" placeholder="First Name" required onkeyup="return Validate()"/><span id = "nameError" style="color:rgb(255,0, 0,0.404);"></span>
+    <input  type="text" name="lname" id="lname" placeholder="Last Name" required onkeyup="return Validatename()"/><span id = "nameError" style="color:rgb(255,0, 0,0.404);"></span>
+    <input type="email" name="email" id="email" placeholder="e-mail" autocomplete="off" required  onkeyup="return ValidateEmail()"/><span id="emailError" style="color:rgb(255,0, 0,0.404);"></span>
+    <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required onkeyup="return Validatepassword()" /><span id="passwordError" style="color:rgb(255, 0, 0, 0.404);"></span>
+    <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required onkeyup="return Confirmpass()"/><span id="cpasswordError" style="color:rgb(255, 0, 0, 0.404);"></span>
+    <input type="text" name="phone" id="phone" placeholder="Phone No" required onkeyup="return ValidatePhone()"/> <span id="phoneError" style="color:rgb(255, 0, 0, 0.404);"></span>
+    <input type="text" name="address" id="address" placeholder="Address" required onkeyup="return ValidateAddress()"/><span id = "addressError" style="color:rgb(255,0, 0,0.404);"></span>
+
+    <input type="text" name="city" id="city" placeholder="City" required onkeyup="return ValidateCity()"/><span id = "cityError" style="color:rgb(255,0, 0,0.404);"></span>
+    <select name="state" id="state">
+      <option>Choose your State</option>
+      <option>Kerala</option>
+      </select>
+    <input type="text" name="pincode" id="pincode" placeholder="Pincode" required onkeyup="return ValidatePin()"/><span id = "pinError" style="color:rgb(255,0, 0,0.404);"></span>
+
+
+    <!-- <input type="text" name="address" id="address" placeholder="Address" required onkeyup="return ValidateAddress()" /><span id="address" style="color:rgb(255, 0, 0, 0.404);"></span>
+    <input type="text" name="city" id="city" placeholder="city" required onkeyup="return ValidateAddress()" /><span id="address" style="color:rgb(255, 0, 0, 0.404);"></span> -->
+
+    <!-- <label for="role">Choose your Role:</label> -->
+<select name="Role" id="Role">
+  <option value="Manager">Manager</option>
+  <option value="Sales person">Sales person</option>
+  <option value="Customer" selected>Customer</option>
+</select>
+   <br>
+    <!-- <select name = "dropdown">
+      <option value = "Manager" selected>Manager</option>
+      <option value = "Sales person">Sales person</option>
+      <option value = "Customer">Customer</option>
+   </select> -->
+    <div class="submit">
+     <input type="submit" name="submit" value="submit"/>
+    </div>
+    <p>
+    <!-- class="message" -->
+    Already Registered?<a href="http://127.0.0.1:8000/login">Login</a></p>
+    </form>
+    </div>
+    </div>
+     <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>EcoDen</span>
+          </a>
+          <p>We do the best management of waste here. We forsee to collect 20 tonness of E-wates by 2025. The products that are made through E-wastes are of great quality.</p>
+          <div class="social-links d-flex mt-4">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Pickup waste</a></li>
+            <li><a href="#">Recycled products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+           M G Road, Thrissur<br>
+           Kerala<br>
+            India<br><br>
+            <strong>Phone:</strong> +91 9061621107<br>
+            <strong>Email:</strong> ecoden@gmail.co.in<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4" id="bottom">
+      <div class="copyright">
+        &copy; Copyright <strong><span>EcoDen</span></strong>. All Rights Reserved
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <!-- <script type="text/javascript">
+    // function name(){
+      document.addEventListener("DOMContentLoaded",() =>{
+        const email = document.querySelector("email");
+        const submit = document.querySelector("submit");
+        if(!email || !submit){
+          return;
+        }
+        let emailIsValid = false;
+        const validateEmail = (value) => {
+          const emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if(value.match(emailValidation)){
+            return true;
+          }
+          return false;
+        };
+        const applyInvalidStyles = (el) => {
+          el.classList.remove("input-valid-state");
+          el.classList.add("input-error-state");
+        };
+        const applyValidStyle = (el) => {
+          el.classList.remove("input-error-state");
+          el.classList.add("input-valid-state");
+        };
+        const disableSubmitButton = () => {
+          submit.disabled = true;
+          submit.classList.add("submit-disabled-state");
+        };
+        const enableSubmitButton = () => {
+          submit.disabled = false;
+          submit.classList.remove("submit-disabled-state");
+  
+        };
+        const updateSubmitButton = () => {
+          if (emailIsValid){
+            enableSubmitButton();
+          }
+          else{
+            disableSubmitButton();
+          }
+        };
+        email.addEventListener("input", (event) =>{
+          const emailFormValue = event.target.value;
+          if(validateEmail(emailFormValue)){
+            emailIsValid = true;
+            applyValidStyle(email);
+  
+  
+          }
+          else{
+            emailIsValid = false;
+            applyInvalidStyles(email);
+          }
+          updateSubmitButton();
+        });
+        updateSubmitButton();
+      });  
+  
+    // }
+  </script> -->
+  <script type="text/javascript">
+function Validate() 
+                            {
+                            var val = document.getElementById('name').value;
+                            if (!val.match(/^[A-Z].*$/)) 
+                            {
+                              document.getElementById('nameError').innerHTML="Start with a Capital letter & Only alphabets are allowed";
+                                    document.getElementById('name').value = val;
+                                    document.getElementById('name').style.color = "red";
+                                      return false;
+                                     flag=1;
+                            }
+                            if(val.length<3||val.length>30){
+                              document.getElementById('nameError').innerHTML="Between 3 to 10 characters";
+                                    document.getElementById('name').value = val;
+    
+    
+                                document.getElementById('name').style.color = "red";
+                                      return false;
+                                      
+                            }
+                            else{
+    
+                            
+                              document.getElementById('nameError').innerHTML=" ";
+                              document.getElementById('name').style.color = "green";
+                             return true;
+                            }
+                          }
+                          function Validatename() 
+                            {
+                            var val = document.getElementById('lname').value;
+                            if (!val.match(/^[A-Z].*$/)) 
+                            {
+                              document.getElementById('nameError').innerHTML="Start with a Capital letter & Only alphabets are allowed";
+                                    document.getElementById('lname').value = val;
+                                    document.getElementById('lname').style.color = "red";
+                                      return false;
+                                     flag=1;
+                            }
+                            if(val.length<1||val.length>30){
+                              document.getElementById('nameError').innerHTML="Between 3 to 10 characters";
+                                    document.getElementById('lname').value = val;
+    
+    
+                                document.getElementById('lname').style.color = "red";
+                                      return false;
+                                      
+                            }
+                            else{
+    
+                            
+                              document.getElementById('nameError').innerHTML=" ";
+                              document.getElementById('lname').style.color = "green";
+                             return true;
+                            }
+                          }
+                            
+                            function ValidateEmail()
+                            {
+                         
+                              var email=document.getElementById('email').value;  
+                              var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                            //var atposition=x.indexOf("@");  
+                            //var dotposition=x.lastIndexOf(".");  
+                           
+                              if(email.length<3||email.length>30){
+                                document.getElementById('emailError').innerHTML="Invalid Email";
+                                    document.getElementById('email').value = email;
+                                    document.getElementById('email').style.color = "red";
+                                   // alert("err");
+                                      return false;
+                              }
+                             if(!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){  
+                                document.getElementById('emailError').innerHTML="Please enter a valid Email";  
+                                document.getElementById('email').value = email;
+                                    document.getElementById('email').style.color = "red";
+                              return false;  
+                              }
+                              else{
+                              document.getElementById('emailError').innerHTML=" ";
+                              document.getElementById('email').style.color = "green";
+                             return true;
+    
+                              
+                            }
+                          }
+                            
+                             function Validatepassword()
+                             {
+                          
+                              var pass=document.getElementById('password').value;
+                              // var patt="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/";
+                              //  if (pass.length<8)
+                               if(!pass.match(/[a-z]/g)){
+                                document.getElementById('password').value = pass;
+                                document.getElementById('passwordError').innerHTML="Enter a strong password eg:Aa#23gh56";
+                                document.getElementById('password').style.color="red"
+                                  return false;
+                                }
+                                if(!pass.match(/[A-Z]/g)){
+                                  document.getElementById('password').value = pass;
+                                  document.getElementById('passwordError').innerHTML="Include minimum one capital letter";
+                                 document.getElementById('password').style.color="red"
+
+                                     return false;
+                                }
+                                if(!pass.match(/[0-9]/g)){
+                                  document.getElementById('password').value = pass;
+                                  document.getElementById('passwordError').innerHTML="Include 1 digit";
+                                document.getElementById('password').style.color="red"
+
+                                return false;
+                                 }
+                              if(!pass.match(/[^a-zA-Z\d]/g)){
+                                document.getElementById('password').value = pass;
+                                document.getElementById('passwordError').innerHTML="Include 1 special character";
+                              document.getElementById('password').style.color="red"
+
+                              return false;
+                                 }
+                            if(pass.length < 8){
+                              document.getElementById('password').value = pass;
+                              document.getElementById('passwordError').innerHTML="Minimum 8 characters";
+                              document.getElementById('password').style.color="red"
+
+                              return false;
+                            }
+                              else{
+                                document.getElementById('password').value = pass;
+
+                                document.getElementById('passwordError').innerHTML="";
+                                document.getElementById('password').style.color = "green";
+                              }
+                           
+                               
+                          }
+                          function Confirmpass()
+                             {
+                          
+                              var pass1=document.getElementById('password').value;
+                              var pass2=document.getElementById('cpassword').value;
+                               if (pass1!=pass2)
+                                        {
+                                document.getElementById('cpasswordError').innerHTML="Password doesn't match ";  
+                                document.getElementById('cpassword').value = pass2;
+                                document.getElementById('cpassword').style.color = "red";
+                              return false;  
+                              }
+                           
+                              else{
+                              document.getElementById('cpasswordError').innerHTML=" ";
+                              document.getElementById('cpassword').style.color = "green";
+                            return true;
+                              
+                            }
+                          }
+                          function ValidatePhone(){
+                            var phone=document.getElementById('phone').value;
+                            if(!phone.match(/^[6789][0-9]{9}$/)){
+                            document.getElementById('phoneError').innerHTML="Enter a valid phone number";
+                            document.getElementById('phone').style.color="red";
+                           return false;
+                           }
+                          else{
+                          document.getElementById('phoneError').innerHTML=" ";
+                          document.getElementById('phone').style.color="green";
+                          return true;
+}
+}
+function ValidatePin(){
+                            var pincode=document.getElementById('pincode').value;
+                            if(!pincode.match(/^[6][7-9][0-9]{4}$/)){
+                            document.getElementById('pinError').innerHTML="Enter a valid pin code";
+                            document.getElementById('pincode').style.color="red";
+                           return false;
+                           }
+                          else{
+                          document.getElementById('pinError').innerHTML=" ";
+                          document.getElementById('pincode').style.color="green";
+                          return true;
+}
+}
+                          
+function ValidateAddress(){
+  var address = document.getElementById('address').value;
+                            if (!address.match(/^[a-zA-Z ]*$/)) 
+                            {
+                              document.getElementById('addressError').innerHTML="Enter a valid address";
+                                    document.getElementById('address').value = address;
+                                    document.getElementById('address').style.color = "red";
+                                      return false;
+                                     flag=1;
+                            }
+                            if(address.length<3||address.length>30){
+                              document.getElementById('addressError').innerHTML="Enter a valid address";
+                                    document.getElementById('address').value = address;
+    
+    
+                                document.getElementById('address').style.color = "red";
+                                      return false;
+                                      
+                            }
+                            else{
+    
+                            
+                              document.getElementById('addressError').innerHTML=" ";
+                              document.getElementById('address').style.color = "green";
+                             return true;
+                            }
+}
+function ValidateCity(){
+  var city = document.getElementById('city').value;
+                            if (!city.match(/^[a-zA-Z ]*$/)) 
+                            {
+                              document.getElementById('cityError').innerHTML="Enter a valid address";
+                                    document.getElementById('city').value = city;
+                                    document.getElementById('city').style.color = "red";
+                                      return false;
+                                     flag=1;
+                            }
+                            if(city.length<3||city.length>30){
+                              document.getElementById('cityError').innerHTML="Enter a valid address";
+                                    document.getElementById('city').value = city;
+    
+    
+                                document.getElementById('city').style.color = "red";
+                                      return false;
+                                      
+                            }
+                            else{
+    
+                            
+                              document.getElementById('cityError').innerHTML=" ";
+                              document.getElementById('city').style.color = "green";
+                             return true;
+                            }
+}
+function pincode(){
+
+}
+                            function Val()
+                            {
+                              if(Validate()===false || ValidateEmail()===false || Validatepassword()===false || Confirmpass()===flase)
+                              {
+                                return false;
+                              }
+                            }
+    
+                            
+  </script>
+  
+</body>
+
+
+</html>

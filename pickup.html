@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EcoDen E-waste management system- Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <style>
+    input[type = submit] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+    .dropbtn{
+    background-color: rgb(8, 103, 86);
+    color: black;
+    padding: 8px;
+    font-size: 12px;
+}
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+.dropdown-content {
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: orange;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: grey;
+}
+
+    /* .li {display:inline} */
+
+    </style>
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+ 
+  <!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>EcoDen</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="http://127.0.0.1:8000/">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/">About</a></li>
+          <li><a href="{% url 'customer' %}">Products</a></li>
+          <li><a href="#bottom">Contact</a></li>
+          <li><div class="dropdown">
+            <button class="dropbtn"> {% if user.is_authenticated %} <a class="active" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.name }}&nbsp;&nbsp;{{user.lname}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>{% endif %}</button>
+            <div class="dropdown-content">
+              <a href="http://127.0.0.1:8000/changepassword">Reset Password</a>
+              <!-- <a href="{% url 'updateProfile' %}">Update Profile</a> -->
+            <a href="{% url 'logout' %}">Logout</a>
+            
+            
+            </div>
+            </div></li>
+		
+        </ul>
+      </nav><!-- .navbar -->
+     </div>
+  </header>
+    <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+    <div class="Login-page">
+    <div class="form">
+      <h2>Pickup Form</h2>
+       
+    <form class="register-form" action="{% url 'pickup1' %}" autocomplete="off" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="name" id="name" placeholder="{{pickupprofile.name}}"  readonly/>
+    <input  type="text" name="lname" id="lname" placeholder="{{pickupprofile.lname}}" readonly/>
+    <input type="email" name="email" id="email" placeholder="{{pickupprofile.email}}" readonly/>
+    <input type="text" name="phone" id="phone" placeholder="{{pickupprofile.phone}}"readonly /> 
+    <input type="text" name="address" id="address" placeholder="{{pickupprofile.address}}" readonly />
+
+    <input type="text" name="city" id="city" placeholder="{{pickupprofile.city}}" readonly />
+  <input type="text" name="state" id="state" placeholder="{{pickupprofile.state}}" readonly />
+   <input type="text" name="pincode" id="pincode" placeholder="{{pickupprofile.pincode}}" readonly/>
+	<input type="file" name="wimg" id="wimage" placeholder="Upload image"accept="image/png, image/jpeg ,image/jpg" required/>
+   <input type="date" name="date" class = "mydate" id="date" placeholder="date" value="{{dumb.date}}" required/>
+   <!-- <input type="date" id="inputdate" name="inputdate"> -->
+   <br>
+    
+    <div class="submit">
+     <input type="submit" name="submit" value="submit"/>
+    </div>
+    
+    </form>
+    </div>
+    </div>
+     <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>EcoDen</span>
+          </a>
+          <p>We do the best management of waste here. We forsee to collect 20 tonness of E-wates by 2025. The products that are made through E-wastes are of great quality.</p>
+          
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Pickup waste</a></li>
+            <li><a href="#">Recycled products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+           M G Road, Thrissur<br>
+           Kerala<br>
+            India<br><br>
+            <strong>Phone:</strong> +91 9061621107<br>
+            <strong>Email:</strong> ecodenmanage@gmail.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4" id="bottom" class="bottom">
+      <div class="copyright">
+        &copy; Copyright <strong><span>EcoDen</span></strong>. All Rights Reserved
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+
+  <script>
+    $(function(){
+        var dtToday = new Date();
+     
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 1)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+        
+        var maxDate = year + '-' + month + '-' + day;
+        alert(maxDate);
+        $('#date').attr('min', maxDate);
+    });
+    </script>
+</body>
+
+
+</html>

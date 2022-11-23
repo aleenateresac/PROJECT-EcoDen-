@@ -1,0 +1,933 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EcoDen E-waste management system- Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+  <style>
+    input[type = submit] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+    button{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+  .dropbtn{
+    background-color: rgb(8, 103, 86);
+    color: black;
+    padding: 8px;
+    font-size: 12px;
+}
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+.dropdown-content {
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: orange;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: grey;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">ecoden@gmail.co.in</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+91 9061621107</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
+  <!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="img/logo.png" alt=""> -->
+        <h1>EcoDen</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!-- <li><a href="http://127.0.0.1:8000/show_cart"><img src="{% static 'img/cart.png' %}" width="30px" height="30px" /></a></li> -->
+
+          <li><div class="dropdown">
+            <button class="dropbtn"> {% if user.is_authenticated %} <a class="active" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.name }}&nbsp;&nbsp;{{user.lname}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>{% endif %}</button>
+            <div class="dropdown-content">
+              <a href="http://127.0.0.1:8000/changepassword">Reset Password</a>
+              <a href="{% url 'prof' %}">Update Profile</a>
+              <!-- <a href="{% url 'updateProfile' %}">Update Profile</a> -->
+            <a href="{% url 'logout' %}">Logout</a>
+            
+            
+            </div>
+            </div></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      
+
+    </div>
+  </header>
+ 
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block" src="{% static 'img/avatar2.jpeg' %}" alt="">
+                        <ul class="meta list list-unstyled">
+                                <!-- <label class="label label-info">UX Designer</label> -->
+                            </li>
+                            <li class="first_name"><a href="">{{request.user.name}}</a></li>
+                            <!-- <li class="activity">Last logged in: Today at 2:18pm</li> -->
+                        </ul>
+                    </div>
+                    <nav class="side-menu">
+                        <!-- <ul class="nav">
+                            <li class="active"><a href="{% url 'prof' %}"><span class="fa fa-user"></span> Profile</a></li>
+<!--                            <li><a href="#"><span class="fa fa-cog"></span> Settings</a></li>-->
+                            <!-- <li><a href="#"><span class="fa fa-envelope"></span> Messages</a></li> -->
+                        <!-- </ul>  -->
+                    </nav>
+                </div>
+                <div class="content-panel">
+                    <form class="form-horizontal" method="post" action="{% url 'profupdate' %}">
+
+                        {% csrf_token %}
+                        {% include 'Message.html' %}
+
+<!--                        <fieldset class="fieldset">-->
+<!--                            <h3 class="fieldset-title">Personal Info</h3>-->
+<!--                            <div class="form-group avatar">-->
+<!--                                <figure class="figure col-md-2 col-sm-3 col-xs-12">-->
+<!--                                    <img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">-->
+<!--                                </figure>-->
+<!--                                -->
+<!--                            </div>-->
+                            <!-- <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+         -->
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Firstname" name="name" value="{{user.name}}" required >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Lastname" name="lname" value="{{user.lname}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{user.email}}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone number</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="Phone number" class="form-control" placeholder="Phone number" name="phone" value="{{user.phone}}" required >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Address</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Address" name="address" value="{{user.address}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">City</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Address" name="city" value="{{user.city}}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">State</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Address" name="state" value="{{user.state}}" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Pincode</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Pincode" name="pincode" value="{{user.pincode}}" required>
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Aadahar Number</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Aadhar Number" name="aadharno" value="{{user.aadharno}}" required>
+                                </div>
+                            </div> -->
+
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Previous working years</label>-->
+<!--                                <div class="col-md-10 col-sm-9 col-xs-12">-->
+<!--                                    <input type="text" class="form-control" placeholder="Working Years" name="wyears" value="{{user.wyears}}" required>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+
+
+
+                        </fieldset>
+<!--
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Contact Info</h3>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="email" class="form-control" placeholder="Email" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Twitter</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="SpeedyBecky">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Linkedin</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="url" class="form-control" value="https://www.linkedin.com/in/lorem">
+                                </div>
+                            </div>
+                        </fieldset> -->
+
+<br><br>
+                    
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="submit" type="submit" value="Update Profile"><br><br>
+                                <a href="{% url 'customer' %}" class="button">Back</a>
+
+
+<!--                                <input class="btn btn-primary" type="submit" value="Update Profile">-->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>EcoDen</span>
+          </a>
+          <p>We do the best management of waste here. We forsee to collect 20 tonness of E-wates by 2025. The products that are made through E-wastes are of great quality.</p>
+          <div class="social-links d-flex mt-4">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Pickup waste</a></li>
+            <li><a href="#">Recycled products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+           M G Road, Thrissur<br>
+           Kerala<br>
+            India<br><br>
+            <strong>Phone:</strong> +91 9061621107<br>
+            <strong>Email:</strong> ecoden@gmail.co.in<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4" id="bottom">
+      <div class="copyright">
+        &copy; Copyright <strong><span>EcoDen</span></strong>. All Rights Reserved
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
+
+<style type="text/css">
+body{
+background:#f9f9fb;
+}
+.view-account{
+background:#FFFFFF;
+margin-top:20px;
+}
+.view-account .pro-label {
+font-size: 13px;
+padding: 2px 2px;
+position: relative;
+top: -5px;
+margin-left: 0px;
+display: inline-block
+}
+
+.view-account .side-bar {
+padding-bottom: 30px
+}
+
+.view-account .side-bar .user-info {
+text-align: center;
+margin-bottom: 15px;
+padding: 30px;
+color: #616670;
+border-bottom: 1px solid #f3f3f3
+}
+
+.view-account .side-bar .user-info .img-profile {
+width: 120px;
+height: 120px;
+margin-bottom: 15px
+}
+
+.view-account .side-bar .user-info .meta li {
+margin-bottom: 10px
+}
+
+.view-account .side-bar .user-info .meta li span {
+display: inline-block;
+width: 100px;
+margin-right: 5px;
+text-align: right
+}
+
+.view-account .side-bar .user-info .meta li a {
+color: #616670
+}
+
+.view-account .side-bar .user-info .meta li.activity {
+color: #a2a6af
+}
+
+.view-account .side-bar .side-menu {
+text-align: center
+}
+
+.view-account .side-bar .side-menu .nav {
+display: inline-block;
+margin: 0 auto
+}
+
+.view-account .side-bar .side-menu .nav>li {
+font-size: 14px;
+margin-bottom: 0;
+border-bottom: none;
+display: inline-block;
+float: left;
+margin-right: 15px;
+margin-bottom: 15px
+}
+
+.view-account .side-bar .side-menu .nav>li:last-child {
+margin-right: 0
+}
+
+.view-account .side-bar .side-menu .nav>li>a {
+display: inline-block;
+color: #9499a3;
+padding: 5px;
+border-bottom: 2px solid transparent
+}
+
+.view-account .side-bar .side-menu .nav>li>a:hover {
+color: #616670;
+background: none
+}
+
+.view-account .side-bar .side-menu .nav>li.active a {
+color: #40babd;
+border-bottom: 2px solid #40babd;
+background: none;
+border-right: none
+}
+
+.theme-2 .view-account .side-bar .side-menu .nav>li.active a {
+color: #6dbd63;
+border-bottom-color: #6dbd63
+}
+
+.theme-3 .view-account .side-bar .side-menu .nav>li.active a {
+color: #497cb1;
+border-bottom-color: #497cb1
+}
+
+.theme-4 .view-account .side-bar .side-menu .nav>li.active a {
+color: #ec6952;
+border-bottom-color: #ec6952
+}
+
+.view-account .side-bar .side-menu .nav>li .icon {
+display: block;
+font-size: 24px;
+margin-bottom: 5px
+}
+
+.view-account .content-panel {
+padding: 30px
+}
+
+.view-account .content-panel .title {
+margin-bottom: 15px;
+margin-top: 0;
+font-size: 18px
+}
+
+.view-account .content-panel .fieldset-title {
+padding-bottom: 15px;
+border-bottom: 1px solid #eaeaf1;
+margin-bottom: 30px;
+color: #616670;
+font-size: 16px
+}
+
+.view-account .content-panel .avatar .figure img {
+float: right;
+width: 64px
+}
+
+.view-account .content-panel .content-header-wrapper {
+position: relative;
+margin-bottom: 30px
+}
+
+.view-account .content-panel .content-header-wrapper .actions {
+position: absolute;
+right: 0;
+top: 0
+}
+
+.view-account .content-panel .content-utilities {
+position: relative;
+margin-bottom: 30px
+}
+
+.view-account .content-panel .content-utilities .btn-group {
+margin-right: 5px;
+margin-bottom: 15px
+}
+
+.view-account .content-panel .content-utilities .fa {
+font-size: 16px;
+margin-right: 0
+}
+
+.view-account .content-panel .content-utilities .page-nav {
+position: absolute;
+right: 0;
+top: 0
+}
+
+.view-account .content-panel .content-utilities .page-nav .btn-group {
+margin-bottom: 0
+}
+
+.view-account .content-panel .content-utilities .page-nav .indicator {
+color: #a2a6af;
+margin-right: 5px;
+display: inline-block
+}
+
+.view-account .content-panel .mails-wrapper .mail-item {
+position: relative;
+padding: 10px;
+border-bottom: 1px solid #f3f3f3;
+color: #616670;
+overflow: hidden
+}
+
+.view-account .content-panel .mails-wrapper .mail-item>div {
+float: left
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .icheck {
+background-color: #fff
+}
+
+.view-account .content-panel .mails-wrapper .mail-item:hover {
+background: #f9f9fb
+}
+
+.view-account .content-panel .mails-wrapper .mail-item:nth-child(even) {
+background: #fcfcfd
+}
+
+.view-account .content-panel .mails-wrapper .mail-item:nth-child(even):hover {
+background: #f9f9fb
+}
+
+.view-account .content-panel .mails-wrapper .mail-item a {
+color: #616670
+}
+
+.view-account .content-panel .mails-wrapper .mail-item a:hover {
+color: #494d55;
+text-decoration: none
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .checkbox-container,
+.view-account .content-panel .mails-wrapper .mail-item .star-container {
+display: inline-block;
+margin-right: 5px
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .star-container .fa {
+color: #a2a6af;
+font-size: 16px;
+vertical-align: middle
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .star-container .fa.fa-star {
+color: #f2b542
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .star-container .fa:hover {
+color: #868c97
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-to {
+display: inline-block;
+margin-right: 5px;
+min-width: 120px
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject {
+display: inline-block;
+margin-right: 5px
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label {
+margin-right: 5px
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label:last-child {
+margin-right: 10px
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label a,
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label a:hover {
+color: #fff
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label-color-1 {
+background: #f77b6b
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label-color-2 {
+background: #58bbee
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label-color-3 {
+background: #f8a13f
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label-color-4 {
+background: #ea5395
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .mail-subject .label-color-5 {
+background: #8a40a7
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .time-container {
+display: inline-block;
+position: absolute;
+right: 10px;
+top: 10px;
+color: #a2a6af;
+text-align: left
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .time-container .attachment-container {
+display: inline-block;
+color: #a2a6af;
+margin-right: 5px
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .time-container .time {
+display: inline-block;
+text-align: right
+}
+
+.view-account .content-panel .mails-wrapper .mail-item .time-container .time.today {
+font-weight: 700;
+color: #494d55
+}
+
+.drive-wrapper {
+padding: 15px;
+background: #f5f5f5;
+overflow: hidden
+}
+
+.drive-wrapper .drive-item {
+width: 130px;
+margin-right: 15px;
+display: inline-block;
+float: left
+}
+
+.drive-wrapper .drive-item:hover {
+box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+z-index: 1
+}
+
+.drive-wrapper .drive-item-inner {
+padding: 15px
+}
+
+.drive-wrapper .drive-item-title {
+margin-bottom: 15px;
+max-width: 100px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis
+}
+
+.drive-wrapper .drive-item-title a {
+color: #494d55
+}
+
+.drive-wrapper .drive-item-title a:hover {
+color: #40babd
+}
+
+.theme-2 .drive-wrapper .drive-item-title a:hover {
+color: #6dbd63
+}
+
+.theme-3 .drive-wrapper .drive-item-title a:hover {
+color: #497cb1
+}
+
+.theme-4 .drive-wrapper .drive-item-title a:hover {
+color: #ec6952
+}
+
+.drive-wrapper .drive-item-thumb {
+width: 100px;
+height: 80px;
+margin: 0 auto;
+color: #616670
+}
+
+.drive-wrapper .drive-item-thumb a {
+-webkit-opacity: .8;
+-moz-opacity: .8;
+opacity: .8
+}
+
+.drive-wrapper .drive-item-thumb a:hover {
+-webkit-opacity: 1;
+-moz-opacity: 1;
+opacity: 1
+}
+
+.drive-wrapper .drive-item-thumb .fa {
+display: inline-block;
+font-size: 36px;
+margin: 0 auto;
+margin-top: 20px
+}
+
+.drive-wrapper .drive-item-footer .utilities {
+margin-bottom: 0
+}
+
+.drive-wrapper .drive-item-footer .utilities li:last-child {
+padding-right: 0
+}
+
+.drive-list-view .name {
+width: 60%
+}
+
+.drive-list-view .name.truncate {
+max-width: 100px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis
+}
+
+.drive-list-view .type {
+width: 15px
+}
+
+.drive-list-view .date,
+.drive-list-view .size {
+max-width: 60px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis
+}
+
+.drive-list-view a {
+color: #494d55
+}
+
+.drive-list-view a:hover {
+color: #40babd
+}
+
+.theme-2 .drive-list-view a:hover {
+color: #6dbd63
+}
+
+.theme-3 .drive-list-view a:hover {
+color: #497cb1
+}
+
+.theme-4 .drive-list-view a:hover {
+color: #ec6952
+}
+
+.drive-list-view td.date,
+.drive-list-view td.size {
+color: #a2a6af
+}
+
+@media (max-width:767px) {
+.view-account .content-panel .title {
+    text-align: center
+}
+.view-account .side-bar .user-info {
+    padding: 0
+}
+.view-account .side-bar .user-info .img-profile {
+    width: 60px;
+    height: 60px
+}
+.view-account .side-bar .user-info .meta li {
+    margin-bottom: 5px
+}
+.view-account .content-panel .content-header-wrapper .actions {
+    position: static;
+    margin-bottom: 30px
+}
+.view-account .content-panel {
+    padding: 0
+}
+.view-account .content-panel .content-utilities .page-nav {
+    position: static;
+    margin-bottom: 15px
+}
+.drive-wrapper .drive-item {
+    width: 100px;
+    margin-right: 5px;
+    float: none
+}
+.drive-wrapper .drive-item-thumb {
+    width: auto;
+    height: 54px
+}
+.drive-wrapper .drive-item-thumb .fa {
+    font-size: 24px;
+    padding-top: 0
+}
+.view-account .content-panel .avatar .figure img {
+    float: none;
+    margin-bottom: 15px
+}
+.view-account .file-uploader {
+    margin-bottom: 15px
+}
+.view-account .mail-subject {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.view-account .content-panel .mails-wrapper .mail-item .time-container {
+    position: static
+}
+.view-account .content-panel .mails-wrapper .mail-item .time-container .time {
+    width: auto;
+    text-align: left
+}
+}
+
+@media (min-width:768px) {
+.view-account .side-bar .user-info {
+    padding: 0;
+    padding-bottom: 15px
+}
+.view-account .mail-subject .subject {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+}
+
+@media (min-width:992px) {
+.view-account .content-panel {
+    min-height: 800px;
+    border-left: 1px solid #f3f3f7;
+    margin-left: 200px
+}
+.view-account .mail-subject .subject {
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.view-account .side-bar {
+    position: absolute;
+    width: 200px;
+    min-height: 600px
+}
+.view-account .side-bar .user-info {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding: 30px
+}
+.view-account .side-bar .user-info .img-profile {
+    width: 120px;
+    height: 120px
+}
+.view-account .side-bar .side-menu {
+    text-align: left
+}
+.view-account .side-bar .side-menu .nav {
+    display: block
+}
+.view-account .side-bar .side-menu .nav>li {
+    display: block;
+    float: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f3f3f7;
+    margin-right: 0;

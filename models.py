@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from distutils.command.upload import upload
 from django.contrib.auth.models import User
 import datetime
+# from django.contrib.auth.models import PermissionsMixin
 from fileinput import  filename
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect,render
@@ -33,6 +34,7 @@ class MyAccountManager(BaseUserManager):
             password=password,**extra_fields
 
          )
+    
         user.is_admin=True
         user.is_active=True
         user.is_staff=True
@@ -40,10 +42,10 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    
 
 
-
-
+# ,PermissionsMixin
 class Account(AbstractBaseUser):
     status_choices=(('Approved','Approved'),('Pending','Pending'),('None','None'))
     id=models.AutoField(primary_key=True)
@@ -61,7 +63,7 @@ class Account(AbstractBaseUser):
     last_login = models.DateTimeField(auto_now_add=True)
     is_admin = models.BooleanField(default=False)
 
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_superadmin = models.BooleanField(default=False)
     is_customer = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=True)
@@ -83,6 +85,11 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, add_label):
         return True
+    
+    def get_all_permissions(user=None):
+        if user.is_superadmin:
+            return set()
+    
 
 
 
@@ -100,6 +107,7 @@ class productcustomer(models.Model):
     product_name = models.CharField(max_length=100,unique=True)
     product_description = models.CharField(max_length=100)
     product_price = models.IntegerField()
+    stock = models.IntegerField(default=1)
     
     def __str__(self):
         return self.product_name
@@ -114,20 +122,15 @@ class Cart(models.Model):
     @property
     def total_cost(self):
         return self.quantity * self.product.product_price
-class pickup(models.Model) :
+class dumb(models.Model) :
     fk = models.ForeignKey(Account,on_delete=models.SET_NULL, blank=True, null=True)
-    wimage = models.FileField(upload_to='media/')
+    wimage = models.ImageField(upload_to='pics/',blank=True)
+    date = models.DateTimeField(null=True)
 
     @property
     def name(self):
         return self.fk.name
 
-    @property
-    def lname(self):
-        return self.fk.lname
-
-    @property
-    def phone(self):
-        return self.fk.phone
     def __str__(self):
-        return str(self.wasteimage)
+        return self.fk.name
+

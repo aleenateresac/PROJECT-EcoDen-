@@ -1,0 +1,360 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EcoDen E-waste management system- Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+  <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <style>
+    button{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #009282;
+    width:100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor:pointer;
+    }
+  .dropbtn{
+    background-color: rgb(8, 103, 86);
+    color: black;
+    padding: 8px;
+    font-size: 12px;
+}
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+.dropdown-content {
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: orange;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: grey;
+}
+.topbar {
+  background: #00796b;
+  height: 40px;
+  font-size: 14px;
+  transition: all 0.5s;
+  color: #fff;
+  padding: 0;
+}
+
+.topbar .contact-info i {
+  font-style: normal;
+  color: #fff;
+  line-height: 0;
+}
+
+.topbar .contact-info i a,
+.topbar .contact-info i span {
+  padding-left: 5px;
+  color: #fff;
+}
+
+@media (max-width: 575px) {
+
+  .topbar .contact-info i a,
+  .topbar .contact-info i span {
+    font-size: 13px;
+  }
+}
+
+.topbar .contact-info i a {
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.topbar .contact-info i a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.topbar .social-links a {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 0;
+  transition: 0.3s;
+  margin-left: 20px;
+}
+
+.topbar .social-links a:hover {
+  color: #fff;
+}
+.topbar{
+  padding: 10px 16px;
+  position: fixed;
+  top: 0;
+  width:100%;
+  right: 0;
+  left: 0;
+  height: 70px;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.header{
+  padding: 10px 16px;
+  position: fixed;
+  top: 0;
+  width:100%;
+  right: 0;
+  left: 0;
+  height: 70px;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+  </style>
+  <script type="text/javasript">
+    var user = '{{request.user}}'
+  </script>
+</head>
+
+<body>
+  <!-- <script type="text/javascript" src="{% static 'js/cart.js' %}"></script> -->
+  <!-- {% csrf_token %} -->
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:ecodenmanage@gmail.com">ecodenmanage@gmail.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+91 9061621107</span></i>
+      </div>
+    
+    </div>
+  </section>
+  <!-- End Top Bar -->
+  
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="img/logo.png" alt=""> -->
+        <h1>EcoDen</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#bottom">Contact</a></li>
+          <li><a href="http://127.0.0.1:8000/view_cart"><img src="{% static 'img/cart.png' %}" width="30px" height="30px" /></a></li>
+
+          <li><div class="dropdown">
+            <button class="dropbtn"> {% if user.is_authenticated %} <a class="active" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.name }}&nbsp;&nbsp;{{user.lname}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>{% endif %}</button>
+            <div class="dropdown-content">
+              <a href="http://127.0.0.1:8000/changepassword">Reset Password</a>
+              <!-- <a href="{% url 'updateProfile' %}">Update Profile</a> -->
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'prof' %}">Update Profile</a>
+            
+            </div>
+            </div></li>
+          <!-- <li>{% if user.is_authenticated %} <a class="active" href="#" >{{user.name }}</a>{% else %}</li> {% endif %} -->
+          
+          
+        </ul>
+      </nav><!-- .navbar -->
+
+      
+
+    </div>
+  </header>
+  <!-- End Header -->
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero"><br><br><br><br><br>
+  <div class="container position-relative">
+    <div class="row gy-5" data-aos="fade-in">
+      <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+        <h2>Management for an <span>Eco-friendly Atmosphere</span></h2>
+        <p>EcoDen is a perfect place for your E-waste management problems. We do the best management of waste here.</p>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2">
+        <img src="{% static 'img/home.png' %}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+      </div>
+      <br><br><br><br><br>
+    </div>
+    <br><br><br><br>
+  <!-- End Hero Section -->
+<main id="main">
+</div>
+</section>
+  <!-- ======= About Us Section ======= -->
+  <section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header" id="about">
+        <h2>About Us</h2>
+        <p>EcoDen is an E-waste management product facilitating in urban and remote parts of Kerala. </p>
+      </div>
+
+      <div class="row gy-4">
+     
+          <h3>We do the best management of waste here.</h3>
+        </div>
+        
+          <div class="content ps-0 ps-lg-5">
+            <p class="fst-italic">
+              E-waste management is defined as a method to remove e-waste from the environment in a safe and scientific manner to avoid its negative damaging effects on the environment. It includes recycling, refurbishing, and reusing e-waste that has outlived its usefulness. 
+              Our company succeeds in collecting E-wastes from houses to houses as their needs and recycle them into useful household products. We forsee to collect 20 tonness of E-wates by 2025. The products that are made through E-wastes are of great quality.
+            </p>
+            <p>When e-Waste is not treated properly, it can be very dangerous and contain compounds and materials such as toxic substances and organic pollutants that have a severe impact on human health and ecosystems. Electronic items, for example, are frequently burned at informal garbage sites, releasing toxins into the air that harm both humans and ecology. I t is not only the environment or the people who live in proximity to the trash sites who are at risk. The problem of e-Waste stems primarily from developed countries that perceive recycling e-Waste to be too pricey in their own countries and hence happily ship it to impoverished countries to be handled, with very no background check on how the e-Waste would be treated.</p>
+            <h3>Through EcoDen we are succeeding in collecting E-wastes in a more effective manner.</h3>
+          </div>
+        </div>
+      <br><br><br><br><br><br>
+  </section>
+  <!-- End About Us Section -->
+ 
+
+ 
+<main id="main">
+</div>
+</section>
+   
+    <!-- Product  -->
+    <section id="portfolio" class="portfolio sections-bg" >
+      <div class="container" data-aos="fade-up">
+        <div class="pickup">
+          <br>
+          <a href="{% url 'pickup1' %}"><button id="button">Dump your waste here...</button></a>
+          <br><br><br><br><br><br>
+        </div>
+
+        <div class="section-header" >
+        <div class="section-header" id="products">
+          <h2>Products</h2>
+          <p>Authentic products made from E-wastes</p>
+        </div>
+          <div class="row gy-4 portfolio-container">
+            
+            {% for i in result %}
+            <div class="col-xl-4 col-md-6 portfolio-item filter-app">
+              <div class="portfolio-wrap" >
+                <img src="{{i.product_image.url}}" class="img-fluid" alt=""  ></a>
+                <div class="portfolio-info">
+                 <h4>{{i.product_name}}</h4>
+                 <p>{{i.product_description}}</p>
+                 <p>Rs.{{i.product_price}}/-</p>
+                 <div class="cart">
+                  <form action="/add_cart">
+                    <input type="hidden" name="prod_id" value={{i.id}}>
+                    <button class="button" type="submit">Add To Cart</button>
+                </form>
+                  <!-- <button id="button" value={{i.id}} name="prod_id" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button> -->
+                </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+      </div>
+      </section>
+      <!-- End Product -->
+        <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>EcoDen</span>
+          </a>
+          <p>We do the best management of waste here. We forsee to collect 20 tonness of E-wates by 2025. The products that are made through E-wastes are of great quality.</p>
+          
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Pickup waste</a></li>
+            <li><a href="#">Recycled products</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+           M G Road, Thrissur<br>
+           Kerala<br>
+            India<br><br>
+            <strong>Phone:</strong> +91 9061621107<br>
+            <strong>Email:</strong> ecodenmanage@gmail.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4" id="bottom">
+      <div class="copyright">
+        &copy; Copyright <strong><span>EcoDen</span></strong>. All Rights Reserved
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  </main>
+  </body>
+  </html>
+      <script type="text/javascript">
+        var updateBtns = document.getElementsByClassName('update-cart')
+
+for(var i = 0;i< updateBtns.length;i++){
+    updateBtns[i].addEventListener('click', function(){
+        var productId = this.dataset.product
+        var action = this.dataset.action
+        console.log('productID:',productId,'action', action)
+    })
